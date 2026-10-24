@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d172a" />
+    <meta name="description" content="مهندس تصميم أعمال MEP عن بُعد في مكة المكرمة — سباكة، مكافحة حريق، تكييف ومخططات تنفيذية." />
+    <title>مهندس تصميم MEP | Mechanical Design Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    
+  <link rel="stylesheet" href="style.css"></head>
+  <body>
+    <div id="root"></div>
+  <script src="script.js"></script>
+
+  <section class="external-contact" id="contact-form" dir="rtl">
+    <div class="external-contact-inner">
+      <span class="external-contact-kicker">تواصل مباشر</span>
+      <h2>أرسل استفسارك</h2>
+      <p>اترك بياناتك وسأعود إليك عبر البريد الإلكتروني أو WhatsApp.</p>
+      <form action="https://formsubmit.co/hossamanter3435@gmail.com" method="POST" class="contact-form" id="contactForm">
+        <input type="hidden" name="_subject" value="رسالة جديدة من موقع مهندس تصميم MEP">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://hossamanter3435.github.io/">
+        <label>الاسم<input type="text" name="name" required placeholder="اكتب اسمك"></label>
+        <label>البريد الإلكتروني<input type="email" name="email" required placeholder="name@example.com"></label>
+        <label>الخدمة المطلوبة<select name="service"><option>استشارة MEP</option><option>تصميم تكييف HVAC</option><option>تصميم مكافحة حريق</option><option>تصميم سباكة</option><option>مخططات تنفيذية</option><option>أخرى</option></select></label>
+        <label>الرسالة<textarea name="message" required rows="5" placeholder="اكتب تفاصيل طلبك"></textarea></label>
+        <div class="contact-form-actions">
+          <button type="submit" class="external-btn external-btn-primary">إرسال إلى البريد</button>
+          <button type="button" class="external-btn external-btn-whatsapp" id="whatsappFormButton">إرسال عبر WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  <script>
+    document.getElementById('whatsappFormButton').addEventListener('click', function () {
+      const form = document.getElementById('contactForm');
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const name = String(data.get('name') || '').trim();
+      const email = String(data.get('email') || '').trim();
+      const service = String(data.get('service') || '').trim();
+      const messageText = String(data.get('message') || '').trim();
+      const message = [
+        'مرحبًا، أنا ' + name,
+        'البريد: ' + email,
+        'الخدمة: ' + service,
+        'الرسالة: ' + messageText
+      ].join('\n');
+      const whatsappUrl = 'https://web.whatsapp.com/send?phone=966542180623&text=' + encodeURIComponent(message);
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+  </script>
+</body>
+</html>
